@@ -1,0 +1,15 @@
+#root {
+    display: flex;
+    justify-content: center;
+}
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.game__inner {
+    width: 400px;
+}
