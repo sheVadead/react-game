@@ -6,7 +6,7 @@ import Options from "./components/options";
 import { resumeGame } from "./actions";
 import store from "./store";
 import { Provider } from "react-redux";
-
+import "./index.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 ReactDOM.render(
   <Provider store={store}>

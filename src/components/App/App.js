@@ -4,12 +4,16 @@ import Header from "../Header";
 import Main from "../Main";
 import { connect } from "react-redux";
 import "./App.css";
-import { newGame } from "../../actions";
+import { newGame, resumeGame } from "../../actions";
 function App(state) {
   useEffect(() => {
-    state.dispatch(newGame());
+    if (state.resume) {
+      state.dispatch(resumeGame());
+    } else {
+      state.dispatch(newGame());
+    }
   }, []);
-
+  
   return (
     <div className='game'>
       <div className='game__inner'>

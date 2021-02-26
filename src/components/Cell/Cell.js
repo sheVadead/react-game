@@ -7,11 +7,14 @@ const Cell = (state) => {
   const { data } = state;
   return (
     <div className='game-cell' data={data}>
-      {state.sigil ? state.sigil : ""}
+      {test(state)}
     </div>
   );
 };
 const stateToProps = (state) => {
   return { state };
+};
+const test = (state) => {
+  return <span className='cell-sigil'>{state.sigil ? state.sigil : ""}</span>;
 };
 export default connect(stateToProps)(Cell);
