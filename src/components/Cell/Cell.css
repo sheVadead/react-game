@@ -20,7 +20,7 @@
 }
 .game-cell .cell-sigil {
     color: red;
-    font: normal bold 88px/110% 'Arial', sans-serif;
+    font: normal bold 5rem/110% 'Arial', sans-serif;
 }
 .game-cell .cell-sigil:hover {
     cursor: default;

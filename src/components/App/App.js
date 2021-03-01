@@ -13,7 +13,7 @@ function App(state) {
       state.dispatch(newGame());
     }
   }, []);
-  
+
   return (
     <div className='game'>
       <div className='game__inner'>

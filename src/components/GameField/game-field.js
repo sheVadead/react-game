@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
+import { clicksCount, gameEnd } from "../../actions";
 import { clickCheck } from "../../gameMechanics";
+import store from "../../store";
 import Cell from "../Cell";
 import "./game-field.css";
-const GameField = (state) => {
-  let field = state.state.initField;
+const GameField = (props) => {
+  const state = useSelector((state) => state);
+  const field = state.initField;
   return (
     <div
       onClick={(event) => {
+        store.dispatch(clicksCount());
         const cell = event.target.closest(".game-cell");
         clickCheck(cell, field, event, state);
       }}
@@ -15,7 +19,7 @@ const GameField = (state) => {
     >
       {field.map((cell, index) => {
         const sigil = cell.sigil;
-        if (state.resume) {
+        if (props.resume) {
           return <Cell data={index} sigil={sigil} />;
         } else {
           return <Cell data={index} />;
@@ -25,8 +29,4 @@ const GameField = (state) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return { state };
-};
-
-export default connect(mapStateToProps)(GameField);
+export default GameField;

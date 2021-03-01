@@ -10,8 +10,9 @@ let initialState = {
     "null",
     "null",
   ],
-  currentSigil: "O",
+  currentSigil: "X",
   clicks: 0,
+  isGameEnd: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -33,15 +34,18 @@ const reducer = (state = initialState, action) => {
       return state;
 
     case "RESUME_GAME":
-      console.log("RESUME_GAME");
-      state = JSON.parse(localStorage.getItem("savedGame"));
+      state = JSON.parse(localStorage.getItem("savedGame")) || state;
+      state.currentSigil = state.currentSigil === "X" ? "O" : "X";
       return state;
 
     case "NEW_GAME":
       resetState();
       state = initialState;
       return state;
-
+    case "GAME_END":
+      state.isGameEnd = true;
+      console.log("end");
+      return state;
     default:
       return state;
   }
@@ -59,9 +63,9 @@ const resetState = () => {
       "null",
       "null",
     ],
-    currentSigil: "O",
+    currentSigil: "X",
     clicks: 0,
+    isGameEnd: false,
   };
-  console.log(initialState);
 };
 export default reducer;

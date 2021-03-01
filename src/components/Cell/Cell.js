@@ -1,20 +1,19 @@
 import React, { useEffect } from "react";
 
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import store from "../../store";
 import "./Cell.css";
-const Cell = (state) => {
-  const { data } = state;
+const Cell = (props) => {
+  const state = useSelector((state) => state);
+  const { data } = props;
   return (
     <div className='game-cell' data={data}>
-      {test(state)}
+      {cellSpan(props)}
     </div>
   );
 };
-const stateToProps = (state) => {
-  return { state };
+
+const cellSpan = (props) => {
+  return <span className='cell-sigil'>{props.sigil ? props.sigil : ""}</span>;
 };
-const test = (state) => {
-  return <span className='cell-sigil'>{state.sigil ? state.sigil : ""}</span>;
-};
-export default connect(stateToProps)(Cell);
+export default Cell;

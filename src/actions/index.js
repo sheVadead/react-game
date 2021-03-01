@@ -1,4 +1,4 @@
-const startField = (newBooks) => {
+const startField = () => {
   return {
     type: "INIT_FIELD",
   };
@@ -26,9 +26,13 @@ const resumeGame = () => {
 };
 
 const newGame = () => {
+  console.log("qwe");
   return {
     type: "NEW_GAME",
   };
+};
+const gameEnd = () => {
+  return { type: "GAME_END" };
 };
 export {
   startField,
@@ -37,4 +41,5 @@ export {
   clicksCount,
   resumeGame,
   newGame,
+  gameEnd,
 };
