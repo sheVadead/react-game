@@ -3,9 +3,9 @@ import Cell from "./Cell";
 
 const GameBoard = ({ cells, onClick }) => (
   <div className='board'>
-    {cells.map((cell, i) => (
-      <Cell key={i} value={cell} onClick={() => onClick(i)} />
-    ))}
+    {cells.map((cell, i) => {
+      return <Cell key={i} value={cell} onClick={() => onClick(i)} />;
+    })}
   </div>
 );
 
