@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { calculateWinner } from "./helpers/helpers";
 import Board from "./game-board";
 import Header from "./header/Header";
+import Footer from "./footer/Footer";
 const Game = () => {
   const [gameCells, setGameCells] = useState(
     JSON.parse(localStorage.getItem("savedGame")) || Array(9).fill(null)
@@ -39,6 +40,7 @@ const Game = () => {
         </div>
       </div>
       {<Board cells={gameCells} onClick={handleClick} />}
+      <Footer />
     </>
   );
 };

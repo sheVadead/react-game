@@ -1,0 +1,15 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.git {
+    text-decoration: none;
+    color: black;
+}
+
+.git:hover {
+    transition: 0.5s;
+    transform: scale(1.1)
+}

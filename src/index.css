@@ -33,6 +33,11 @@ h1 {
   color:#a3365b;
   font: bold normal 1rem/110% Roboto, sans-serif;
 }
+.nav-item a {
+  color:#a3365b;
+  font: bold normal 1rem/110% Roboto, sans-serif;
+  text-decoration: none;
+}
 .nav-item:hover {
   cursor: pointer;
   transition: 0.5s;
