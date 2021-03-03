@@ -1,62 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { calculateWinner } from "./helpers/helpers";
 import Board from "./game-board";
 import Header from "./header/Header";
 const Game = () => {
-  const [history, setHistory] = useState([Array(9).fill(null)]);
-  const [isGameRestarted, restart] = useState(false);
-  const [stepNumber, setStepNumber] = useState(0);
+  const [gameCells, setGameCells] = useState(
+    JSON.parse(localStorage.getItem("savedGame")) || Array(9).fill(null)
+  );
   const [xIsNext, setXisNext] = useState(true);
-  const winner = calculateWinner(history[stepNumber]);
+  const winner = calculateWinner(gameCells);
+  const [isSound, setSound] = useState(true);
   const xO = xIsNext ? "X" : "O";
-  let savedGame = null;
   const handleClick = (i) => {
-    const historyPoint = history.slice(0, stepNumber + 1);
-    const current = historyPoint[stepNumber];
-    const cells = [...current];
+    const cells = gameCells;
     if (winner || cells[i]) return;
     cells[i] = xO;
-    setHistory([...historyPoint, cells]);
-    setStepNumber(historyPoint.length);
+    setGameCells(cells);
     setXisNext(!xIsNext);
-    localStorage.setItem("savedGame", JSON.stringify(historyPoint.slice(-1)));
+    savingGame(cells);
   };
-  const jumpTo = (step) => {
-    setStepNumber(step);
-    setXisNext(step % 2 === 0);
+  const savingGame = (cells) => {
+    localStorage.setItem("savedGame", JSON.stringify(cells));
   };
-  console.log(savedGame);
-  const renderMoves = () =>
-    history.map((_step, move) => {
-      const destination = move ? `Go to move #${move}` : "Go to Start";
-      return (
-        <li key={move}>
-          <button onClick={() => jumpTo(move)}>{destination}</button>
-        </li>
-      );
-    });
-  useEffect(() => {
-    savedGame = JSON.parse(localStorage.getItem("savedGame"));
-    console.log(savedGame);
-  });
+
   return (
     <>
-      <Header isGameRestarted={isGameRestarted} restart={restart} />
-      {!isGameRestarted ? (
-        <Board
-          cells={savedGame ? savedGame : history[stepNumber]}
-          onClick={handleClick}
-        />
-      ) : (
-        <Board cells={history[stepNumber]} onClick={handleClick} />
-      )}
+      <Header
+        restart={setGameCells}
+        resetPlayer={setXisNext}
+        soundSettings={[isSound, setSound]}
+      />
       <div className='info-wrapper'>
-        {/* <div>
-          <h3>History</h3>
-          {renderMoves()}
-        </div> */}
         <h3>{winner ? "Winner: " + winner : "Next Player: " + xO}</h3>
+        <div className='competitive'>
+          <span className='player-x'>X:</span>
+          {localStorage.getItem("X")}
+          <span className='player-o'>O:</span>
+          {localStorage.getItem("O")}
+        </div>
       </div>
+      {<Board cells={gameCells} onClick={handleClick} />}
     </>
   );
 };

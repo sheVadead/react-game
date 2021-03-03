@@ -12,8 +12,24 @@ export function calculateWinner(cells) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+      addWinLine(lines[i]);
+      let winCount = +localStorage.getItem(`${cells[a]}`);
+      localStorage.setItem(`${cells[a]}`, (winCount += 1));
       return cells[a];
     }
   }
   return null;
 }
+
+const addWinLine = (line) => {
+  setTimeout(() => {
+    const field = document.querySelector(".board");
+    if (line[1] - line[0] === 3) {
+      field.classList.add("v", `v${line[0]}`, "full");
+    } else if (line[1] - line[0] === 1) {
+      field.classList.add("h", `h${line[0]}`, "full");
+    } else {
+      field.classList.add("d", `d${line[0]}`, "full");
+    }
+  });
+};
