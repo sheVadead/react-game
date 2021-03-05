@@ -169,10 +169,15 @@ h1 {
 .X-blue {
   color: blue;
 }
-.O {
-  color: #365ca3;
+.O-brown {
+  color: #a35e36;
 }
-
+.O-yellow {
+  color: yellow;
+}
+.O-green {
+  color: green;
+}
 .info-wrapper {
   display: flex;
   flex-direction:column;

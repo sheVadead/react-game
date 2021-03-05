@@ -8,4 +8,8 @@ const soundOff = () => {
 const colorChange = (payload) => {
   return { type: "COLOR_CHANGE", payload };
 };
-export { soundOn, soundOff, colorChange };
+
+const colorChangeO = (payload) => {
+  return { type: "COLOR_CHANGE_O", payload };
+};
+export { soundOn, soundOff, colorChange, colorChangeO };

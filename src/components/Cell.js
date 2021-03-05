@@ -6,9 +6,12 @@ import store from "./store";
 const Cell = (props) => {
   const [play] = useSound(xSound);
   console.log(props.xColor);
-  const style = props.value
-    ? `squares ${props.value}-${props.xColor.toLowerCase()}`
-    : `squares`;
+  const style =
+    props.value === "X"
+      ? `squares ${props.value}-${props.xColor.toLowerCase()}`
+      : props.value === "O"
+      ? `squares ${props.value}-${props.oColor.toLowerCase()}`
+      : "squares";
   return (
     <div
       className={style}

@@ -10,6 +10,8 @@ localStorage.setItem(`X`, 0);
 localStorage.setItem("O", 0);
 if (!localStorage.getItem("xColor")) {
   localStorage.setItem("xColor", "purple");
+} else if (!localStorage.getItem("oColor")) {
+  localStorage.setItem("oColor", "brown");
 }
 ReactDom.render(
   <Provider store={store}>

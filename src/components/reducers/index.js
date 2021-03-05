@@ -1,6 +1,7 @@
 const initialState = {
   isSound: JSON.parse(localStorage.getItem("isSound")),
   xColor: localStorage.getItem("xColor") || "purple",
+  oColor: localStorage.getItem("oColor") || "brown",
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -15,6 +16,9 @@ const reducer = (state = initialState, action) => {
     case "COLOR_CHANGE":
       state.xColor = action.payload;
       return state;
+      case "COLOR_CHANGE_O":
+        state.oColor = action.payload;
+        return state;
     default:
       return state;
   }
