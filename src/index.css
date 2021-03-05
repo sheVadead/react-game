@@ -5,7 +5,15 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 80%;
+  height: 100%;
+}
 body {
   color: white;
   font-family: "Roboto", sans-serif;
@@ -19,6 +27,8 @@ h1 {
 }
 
 .nav {
+  width: 100%;
+  max-width: 600px;
   border: 3px solid #a3365b;
   border-radius: 10px;
   margin-bottom: 1rem;
@@ -44,10 +54,12 @@ h1 {
   transform:scale(1.1);
 }
 .board {
+  width: 100%;
+  max-width: 450px;
   position: relative;
   border: 0.5rem solid #a3365b;
   background: #a3365b;
-  width: 450px;
+
   height: 450px;
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
@@ -74,11 +86,11 @@ h1 {
   top: calc(100% / 6);
 }
 
-.board.h1::after {
+.board.h3::after {
   top: 50%;
 }
 
-.board.h2::after {
+.board.h6::after {
   top: calc(5 * 100% / 6);
 }
 
@@ -148,8 +160,14 @@ h1 {
   transition: 0.5s;
   box-shadow: 0px 0px 8px 16px #a3365b inset;
 }
-.X {
+.X-purple {
   color: #a33636;
+}
+.X-red {
+  color: red;
+}
+.X-blue {
+  color: blue;
 }
 .O {
   color: #365ca3;

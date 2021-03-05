@@ -5,21 +5,16 @@ import xSound from "../assets/sound/x-sound.mp3";
 import store from "./store";
 const Cell = (props) => {
   const [play] = useSound(xSound);
-  let isSound = true;
-  useEffect(() => {
-    console.log(props);
-    store.subscribe(() => {
-      const state = store.getState();
-      isSound = state.isSound;
-    });
-  }, []);
-  const style = props.value ? `squares ${props.value}` : `squares`;
+  console.log(props.xColor);
+  const style = props.value
+    ? `squares ${props.value}-${props.xColor.toLowerCase()}`
+    : `squares`;
   return (
     <div
       className={style}
       onClick={() => {
         props.onClick();
-        if (isSound) {
+        if (props.isSound) {
           play();
         }
       }}
@@ -28,5 +23,7 @@ const Cell = (props) => {
     </div>
   );
 };
-
-export default connect()(Cell);
+const mapStateToProps = (state) => {
+  return state;
+};
+export default connect(mapStateToProps)(Cell);

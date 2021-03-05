@@ -27,6 +27,7 @@ const addWinLine = (line) => {
     if (line[1] - line[0] === 3) {
       field.classList.add("v", `v${line[0]}`, "full");
     } else if (line[1] - line[0] === 1) {
+      console.log(line[0]);
       field.classList.add("h", `h${line[0]}`, "full");
     } else {
       field.classList.add("d", `d${line[0]}`, "full");
