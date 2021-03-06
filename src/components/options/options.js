@@ -1,19 +1,17 @@
 import React, { useRef, useEffect } from "react";
 import { useSelector, connect } from "react-redux";
 import "./options.css";
+
 import { soundOn, soundOff, colorChange, colorChangeO } from "../actions/index";
+import { setDefaultColor } from "../helpers/functions";
 const Options = (props) => {
   const soundCheck = useRef(null);
   const xColor = useRef(null);
+  const oColor = useRef(null);
   useEffect(() => {
     soundCheck.current.checked = props.state.isSound;
-    console.log(xColor);
-    xColor.current.childNodes.forEach((item) => {
-      if (item.textContent.toLowerCase() === localStorage.getItem("xColor")) {
-        console.log(item);
-        item.current.selected = true;
-      }
-    });
+    setDefaultColor(xColor);
+    setDefaultColor(oColor);
   }, []);
   return (
     <div className='options'>
@@ -21,6 +19,7 @@ const Options = (props) => {
       <div className='sound-options'>
         <span className='sound'>Sound</span>
         <input
+          id='switch'
           ref={soundCheck}
           type='checkbox'
           onChange={(e) => {
@@ -32,12 +31,14 @@ const Options = (props) => {
             e.target.checked = props.state.isSound;
           }}
         />
+        <label htmlFor='switch'>Toggle</label>
       </div>
 
       <div className='color-options'>
         <div className='x-color'>
-          <span className='x-text'>Choose X color</span>
+          <span className='x-text'>X color</span>
           <select
+            id='X-color'
             onChange={(e) => {
               const color = e.target.value;
               localStorage.setItem("xColor", color);
@@ -53,14 +54,15 @@ const Options = (props) => {
         </div>
 
         <div className='o-color'>
-          <span className='o-text'>Choose O color</span>
+          <span className='o-text'>O color</span>
           <select
+            id='O-color'
             onChange={(e) => {
               const color = e.target.value;
               localStorage.setItem("oColor", color);
               props.dispatch(colorChangeO(color));
             }}
-            ref={xColor}
+            ref={oColor}
             className='color'
           >
             <option>Yellow</option>

@@ -5,7 +5,7 @@ const Footer = () => {
     <div className='footer'>
       <a href='https://rs.school/js/' target='_blank'>
         {" "}
-        <img src={rsLogo} alt='rslogo' width='120' height='120' />
+        <img src={rsLogo} alt='rslogo' width='80' height='80' />
       </a>
       <a className='git' href='https://github.com/sheVadead' target='_blank'>
         Dmitry Shevchenok

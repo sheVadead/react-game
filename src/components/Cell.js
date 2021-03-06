@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import useSound from "use-sound";
 import { connect } from "react-redux";
 import xSound from "../assets/sound/x-sound.mp3";
 import store from "./store";
 const Cell = (props) => {
   const [play] = useSound(xSound);
-  console.log(props.xColor);
   const style =
     props.value === "X"
       ? `squares ${props.value}-${props.xColor.toLowerCase()}`
