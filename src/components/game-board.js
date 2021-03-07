@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Cell from "./Cell";
 
 const GameBoard = ({ cells, onClick }) => {
+
   return (
     <div className='board'>
       {cells.map((cell, i) => {

@@ -1,5 +1,4 @@
 const setDefaultColor = (input) => {
-  console.log(input.current.id);
   input.current.childNodes.forEach((item) => {
     if (
       item.textContent.toLowerCase() ===
@@ -11,5 +10,9 @@ const setDefaultColor = (input) => {
     }
   });
 };
-
-export { setDefaultColor };
+const blockClicks =() => {
+  if(!document.body.classList.contains('block-clicks')) {
+    document.body.classList.add('block-clicks')
+  }
+}
+export { setDefaultColor, blockClicks };

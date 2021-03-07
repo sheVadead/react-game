@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import { Link } from "react-router-dom";
+import { blockClicks } from "../helpers/functions";
 import "./Header.css";
 const Header = ({ restart, resetPlayer, autoPlay }) => {
   let interval;
+  useEffect(() => {
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
   return (
     <>
       <nav className='nav'>
@@ -21,9 +28,10 @@ const Header = ({ restart, resetPlayer, autoPlay }) => {
           <li
             className='nav-item'
             onClick={() => {
+              blockClicks();
               interval = setInterval(() => {
                 autoPlay(interval);
-              }, 1000);
+              }, 1500);
             }}
           >
             Autoplay

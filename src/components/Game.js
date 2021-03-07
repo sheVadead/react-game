@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { calculateWinner } from "./helpers/helpers";
 import Board from "./game-board";
 import Header from "./header/Header";
@@ -13,7 +13,7 @@ const Game = () => {
     !JSON.parse(localStorage.getItem("nextPlayer"))
   );
 
-  const winner = calculateWinner(gameCells, {xClicks, oClicks});
+  const winner = calculateWinner(gameCells, { xClicks, oClicks });
   const [isSound, setSound] = useState(true);
   const xO = xIsNext ? "X" : "O";
   const handleClick = (i) => {
@@ -68,6 +68,7 @@ const autoPlay = (interval) => {
     document.querySelector(".board").classList.contains("winner") ||
     squares.length === 0
   ) {
+    document.body.classList.remove("block-clicks");
     clearInterval(interval);
   } else {
     randomClick(squares);
