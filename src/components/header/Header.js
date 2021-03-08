@@ -15,6 +15,7 @@ const Header = ({ restart, resetPlayer, autoPlay }) => {
       <nav className='nav'>
         <ul className='nav-list'>
           <li
+            id='restart'
             onClick={() => {
               localStorage.removeItem("savedGame");
               resetPlayer(true);
@@ -26,6 +27,7 @@ const Header = ({ restart, resetPlayer, autoPlay }) => {
             Restart
           </li>
           <li
+            id='autoplay'
             className='nav-item'
             onClick={() => {
               blockClicks();
@@ -36,10 +38,10 @@ const Header = ({ restart, resetPlayer, autoPlay }) => {
           >
             Autoplay
           </li>
-          <li className='nav-item'>
+          <li id='options' className='nav-item'>
             <Link to='/options'>Options</Link>
           </li>
-          <li className='nav-item'>
+          <li id='statistics' className='nav-item'>
             {" "}
             <Link to='/statistics'>Statistics</Link>
           </li>

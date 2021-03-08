@@ -3,7 +3,33 @@ import { calculateWinner } from "./helpers/helpers";
 import Board from "./game-board";
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
-const Game = () => {
+import hotkeys from "hotkeys-js";
+const Game = ({ history }) => {
+  hotkeys("alt+1,alt+2,alt+3,alt+4,alt+5", function (event, handler) {
+    event.preventDefault();
+    switch (handler.key) {
+      case "alt+1":
+        event.preventDefault();
+        document.getElementById("restart").click();
+        break;
+      case "alt+2":
+        event.preventDefault();
+        history.push("/options");
+        break;
+      case "alt+3":
+        event.preventDefault();
+        history.push("/statistics");
+        break;
+      case "alt+4":
+        event.preventDefault();
+        history.push("/");
+        break;
+      case "alt+5":
+        event.preventDefault();
+        window.open("https://rs.school/", "_blank");
+        break;
+    }
+  });
   let [xClicks, updateXclicks] = useState(0);
   let [oClicks, updateOclicks] = useState(0);
   const [gameCells, setGameCells] = useState(

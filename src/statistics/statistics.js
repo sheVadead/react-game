@@ -2,7 +2,6 @@ import React from "react";
 import "./statistics.css";
 const Statistics = () => {
   const games = JSON.parse(localStorage.getItem("games")) || [];
-  console.log(games);
   return (
     <>
       <h2 className='score-title'>Statistics</h2>

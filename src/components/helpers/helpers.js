@@ -9,7 +9,6 @@ export function calculateWinner(cells, clicksCount) {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  console.log(clicksCount);
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {

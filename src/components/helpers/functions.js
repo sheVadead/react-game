@@ -10,9 +10,10 @@ const setDefaultColor = (input) => {
     }
   });
 };
-const blockClicks =() => {
-  if(!document.body.classList.contains('block-clicks')) {
-    document.body.classList.add('block-clicks')
+const blockClicks = () => {
+  if (!document.body.classList.contains("block-clicks")) {
+    document.body.classList.add("block-clicks");
   }
-}
+};
+
 export { setDefaultColor, blockClicks };
