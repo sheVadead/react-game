@@ -26,7 +26,3 @@ ReactDom.render(
   </Provider>,
   document.getElementById("root")
 );
-
-alert(
-  "Если есть возможность, проверьте, очень сильно пожалуйста, в последний день кросс-чека."
-);

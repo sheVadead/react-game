@@ -5,13 +5,20 @@ import Header from "./header/Header";
 import Footer from "./footer/Footer";
 import hotkeys from "hotkeys-js";
 const Game = ({ history }) => {
+  let [xClicks, updateXclicks] = useState(0);
+  let [oClicks, updateOclicks] = useState(0);
+  const [gameCells, setGameCells] = useState(
+    JSON.parse(localStorage.getItem("savedGame")) || Array(9).fill(null)
+  );
+  const [xIsNext, setXisNext] = useState(
+    !JSON.parse(localStorage.getItem("nextPlayer"))
+  );
   hotkeys("alt+1,alt+2,alt+3,alt+4,alt+5", function (event, handler) {
     event.preventDefault();
+    if (handler.key === "alt+1" && history.location.pathname === "/") {
+      document.getElementById("restart").click();
+    }
     switch (handler.key) {
-      case "alt+1":
-        event.preventDefault();
-        document.getElementById("restart").click();
-        break;
       case "alt+2":
         event.preventDefault();
         history.push("/options");
@@ -30,15 +37,6 @@ const Game = ({ history }) => {
         break;
     }
   });
-  let [xClicks, updateXclicks] = useState(0);
-  let [oClicks, updateOclicks] = useState(0);
-  const [gameCells, setGameCells] = useState(
-    JSON.parse(localStorage.getItem("savedGame")) || Array(9).fill(null)
-  );
-  const [xIsNext, setXisNext] = useState(
-    !JSON.parse(localStorage.getItem("nextPlayer"))
-  );
-
   const winner = calculateWinner(gameCells, { xClicks, oClicks });
   const [isSound, setSound] = useState(true);
   const xO = xIsNext ? "X" : "O";
