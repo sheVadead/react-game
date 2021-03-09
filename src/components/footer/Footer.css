@@ -1,0 +1,19 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.git {
+    font: bold normal 19px/110% Roboto, sans-serif;
+    text-decoration: none;
+    color: #a3365b;
+}
+
+.git:hover {
+    transition: 0.5s;
+    transform: scale(1.1)
+}
+

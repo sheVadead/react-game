@@ -1,0 +1,41 @@
+.score-title {
+    color: #a3365b;
+}
+
+
+.statistics-table {
+    width: 100%;
+    height: 30%;
+    max-width: 200px;
+    max-height: 90px;
+    color: black;
+    border-spacing: 4px 8px;
+    background-color: rgba(128, 128, 128, 0.048);
+}
+
+.statistics-table tbody td {
+    font: bold normal 18px/110% Roboto, sans-serif;
+    text-align: center;
+    background-color: #a3365b17;
+    margin-bottom: 10px;
+}
+.statistics-table thead th {
+    color:#a3365b;
+}
+.statistics-table thead tr:hover {
+    cursor: pointer;
+    background-color:#a3365b4d;
+}
+.statistics-table thead th:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    transform:scale(1.1);
+}
+.statistics-table tbody tr:hover {
+    cursor: pointer;
+    background-color:#a3365b4d;
+}
+.statistics-table tbody td:hover {
+    cursor: pointer;
+    background-color:#a3365b99;
+}
